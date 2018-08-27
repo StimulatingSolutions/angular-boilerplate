@@ -7,7 +7,7 @@ set -e
 # expected results otherwise
 ###############################################################
 
-MONGO="true"
+MONGOD="true"
 BUILD="--build"
 CLEAN="--clean"
 
