@@ -9,7 +9,7 @@ This project uses:
 Additionally, it supports and/or provides examples of:
 * Pug templates instead of HTML
   * **NOTE**: in `.pug` files, you'll often need to comma-separate element attributes for them to parse correctly due
-to the way Angular 2+ uses punctuation (`*()[]`) in attribute names.
+  to the way Angular 2+ uses punctuation (`*()[]`) in attribute names.
 * Sass (scss) styles instead of CSS
 * TypeScript for both client and server code
 * Sharing modules between client and server
@@ -53,10 +53,13 @@ used in the context of a deployed server, not local testing.
 ## Ng code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use 
-`ng generate directive|pipe|service|class|guard|interface|enum|module`. However, note that the auto-generated files may not
-follow the file structure used in this project, and you'll have to rename `.html` component templates to `.pug`.
-**NOTE**: in `.pug` files, you'll often need to comma-separate element attributes for them to parse correctly due to the way
-Angular 2+ uses punctuation (`*()[]`) in attribute names.
+`ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+**NOTE**: auto-generated files from the above commands may need to be moved from their default location in order to match
+the file structure used in this project
+
+**NOTE**: `ng generate component`, will generate component templates with `.html` instead of `.pug`; you'll have to rename
+them to use Pug syntax
 
 
 ## Build
