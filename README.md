@@ -36,7 +36,7 @@ to the way Angular 2+ uses punctuation (`*()[]`) in attribute names.
 Run `npm run start` for a dev server (it will build automatically by default). Navigate to `http://localhost:4200/`.
 The app will automatically reload if you change any of the source files.
 
-#### Flags
+### Flags
 **Note**: When using an `npm run <blah>` script, any CLI parameters passed in are destined for `npm` unless preceded
 by an extra `--`. For example: `npm run <blah> --some-npm-flag -- --some-script-flag`.
 * `--port <port>` will override the default server port (`4200`)
@@ -64,7 +64,7 @@ Angular 2+ uses punctuation (`*()[]`) in attribute names.
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. (This is not generally
 not necessary to do manually.)
 
-#### Flags
+### Flags
 **Note**: When using an `npm run <blah>` script, any CLI parameters passed in are destined for `npm` unless preceded
 by an extra `--`. For example: `npm run <blah> --some-npm-flag -- --some-script-flag`.
 * `--prod` will do a production build (optimized code, no sourcemaps, etc)
