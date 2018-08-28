@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 
 import { BookService } from '../book.service';
+import {Book} from '../../../../../shared/models/book.model';
 
 
-export class BookDataSource extends DataSource<any> {
+export class BookDataSource extends DataSource<Book> {
   constructor(private api: BookService) {
     super();
   }
