@@ -6,7 +6,7 @@ This project uses:
 * **A**ngular 6
 * **N**ode 8
 
-Additionally, it supports (and provides examples of):
+Additionally, it supports and/or provides examples of:
 * Pug templates instead of HTML
   * **NOTE**: in `.pug` files, you'll often need to comma-separate element attributes for them to parse correctly due
 to the way Angular 2+ uses punctuation (`*()[]`) in attribute names.
@@ -38,7 +38,7 @@ The app will automatically reload if you change any of the source files.
 
 ### Flags
 **Note**: When using an `npm run <blah>` script, any CLI parameters passed in are destined for `npm` unless preceded
-by an extra `--`. For example: `npm run <blah> --some-npm-flag -- --some-script-flag`.
+by an extra `--`. For example: `npm run <blah> --npm-flag-1 --npm-flag-2 -- --script-flag-1 --script-flag-2`.
 * `--port <port>` will override the default server port (`4200`)
 * `--no-mongod` will skip running mongod (use this if you're running mongod externally).
 * `--prod` will give you a production build and server (optimized code, no sourcemaps, angular files served statically by
@@ -66,7 +66,7 @@ not necessary to do manually.)
 
 ### Flags
 **Note**: When using an `npm run <blah>` script, any CLI parameters passed in are destined for `npm` unless preceded
-by an extra `--`. For example: `npm run <blah> --some-npm-flag -- --some-script-flag`.
+by an extra `--`. For example: `npm run <blah> --npm-flag-1 --npm-flag-2 -- --script-flag-1 --script-flag-2`.
 * `--prod` will do a production build (optimized code, no sourcemaps, etc)
 * `--clean` will delete old build files before building
 
