@@ -13,6 +13,11 @@ CLEAN="--clean"
 
 while [[ "$#" > "0" ]]
 do
+  if [[ "$1" == "--bare" ]]
+  then
+    BARE="true"
+  fi
+
   if [[ "$1" == "--prod" ]]
   then
     PROD="--prod"
@@ -42,6 +47,13 @@ do
 
   shift
 done
+
+
+if [[ "$BARE" != "" ]]
+then
+  node dist/server/server.js
+  exit $?
+fi
 
 
 if [[ "$BUILD" != "" ]]

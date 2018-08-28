@@ -20,7 +20,6 @@ import { BookComponent } from './books/book/book.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { BookCreateComponent } from './books/book-create/book-create.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
-import { TestingsadfComponent } from './testingsadf/testingsadf.component';
 
 
 const appRoutes: Routes = [
@@ -56,8 +55,7 @@ const appRoutes: Routes = [
     BookComponent,
     BookDetailComponent,
     BookCreateComponent,
-    BookEditComponent,
-    TestingsadfComponent
+    BookEditComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
