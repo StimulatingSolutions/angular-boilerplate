@@ -14,8 +14,9 @@ to the way Angular 2+ uses punctuation (`*()[]`) in attribute names.
 * TypeScript for both client and server code
 * Sharing modules between client and server
 * DRY definition of Mongoose models and corresponding Typescript classes (via [Typegoose](https://github.com/szokodiakos/typegoose))
+* DRY CRUD entity controllers via inheritance (server-side)
 * Page refreshes at arbitrary client paths
-* Promisified Express routes (via [express-promise-router](https://github.com/express-promise-router/express-promise-router))
+* Promise-based Express routes (via [express-promise-router](https://github.com/express-promise-router/express-promise-router))
 * Angular Material layout and components
 
 
@@ -25,32 +26,55 @@ to the way Angular 2+ uses punctuation (`*()[]`) in attribute names.
 * install Node 8: `nvm install v8`
 * set Node 8 as your default (*unless you know you don't want that*): `nvm alias default v8`
 * upgrade npm to v6: `npm install -g npm@6.x`
-* install [Mongo 4](https://www.mongodb.com/download-center?jmp=nav#community), but don't set it up to run on boot (*unless you know you want that*)
+* install [Mongo 4](https://www.mongodb.com/download-center?jmp=nav#community), but don't set it up to run on boot
+(*unless you know you want that*)
 * install dependencies: `npm install`
 
 
 ## Development server
 
-Run `npm run start` for a dev server (it will build automatically by default). Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-Use the `--prod` flag for a production build and server.  Use the `--no-mongod` flag if you're running mongod externally.
+Run `npm run start` for a dev server (it will build automatically by default). Navigate to `http://localhost:4200/`.
+The app will automatically reload if you change any of the source files.
+
+#### Flags
+**Note**: When using an `npm run <blah>` script, any CLI parameters passed in are destined for `npm` unless preceded
+by an extra `--`. For example: `npm run <blah> --some-npm-flag -- --some-script-flag`.
+* `--port <port>` will override the default server port (`4200`)
+* `--no-mongod` will skip running mongod (use this if you're running mongod externally).
+* `--prod` will give you a production build and server (optimized code, no sourcemaps, angular files served statically by
+node, etc)
+* `--no-build` will skip the build step
+* `--no-clean` will skip deleting old build files in the build step
+* `--bare` will only start the node server; it assumes the code has already been build, expects the environment to be 
+set via `NODE_ENV`, and skips a couple other minor steps normally executed when running locally.  This is intended to be
+used in the context of a deployed server, not local testing.
 
 
 ## Ng code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-However, note that the auto-generated files may not follow the file structure used in this project, and you'll have to rename `.html` component templates to
-`.pug`.  **NOTE**: in `.pug` files, you'll often need to comma-separate element attributes for them to parse correctly due
-to the way Angular 2+ uses punctuation (`*()[]`) in attribute names.
+Run `ng generate component component-name` to generate a new component. You can also use 
+`ng generate directive|pipe|service|class|guard|interface|enum|module`. However, note that the auto-generated files may not
+follow the file structure used in this project, and you'll have to rename `.html` component templates to `.pug`.
+**NOTE**: in `.pug` files, you'll often need to comma-separate element attributes for them to parse correctly due to the way
+Angular 2+ uses punctuation (`*()[]`) in attribute names.
 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. (This is not generally not necessary to do manually.) Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. (This is not generally
+not necessary to do manually.)
+
+#### Flags
+**Note**: When using an `npm run <blah>` script, any CLI parameters passed in are destined for `npm` unless preceded
+by an extra `--`. For example: `npm run <blah> --some-npm-flag -- --some-script-flag`.
+* `--prod` will do a production build (optimized code, no sourcemaps, etc)
+* `--clean` will delete old build files before building
 
 
 ## Running tests
 
-Run `npm run test` to execute client unit tests via [Karma](https://karma-runner.github.io) and end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run test` to execute client unit tests via [Karma](https://karma-runner.github.io) and end-to-end tests via
+[Protractor](http://www.protractortest.org/).
 
 
 ## Linting
@@ -71,20 +95,23 @@ of the originating code are used).  Those inspirational sources are:
 
 ## TO-DO
 
+* better form error messages
+* server-side pagination/filtering/ordering
 * inheritance-based client services
+* multiple app entry points
 * authentication
 * permission-based routes
 * toast
 * loading spinner
-* multiple entry points
 * cordova wrapper
-* server-side pagination/filtering/ordering
+* fix tests
 
 ## License
 
 MIT License
 
-Copyright (c) 2018 [Stimulating Solutions, LLC](https://www.stimulating-solutions.com/) <contact@stimulating-solutions.com>.  All rights reserved.
+Copyright (c) 2018 [Stimulating Solutions, LLC](https://www.stimulating-solutions.com/) <contact@stimulating-solutions.com>.
+All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
