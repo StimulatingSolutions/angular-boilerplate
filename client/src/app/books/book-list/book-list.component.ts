@@ -9,7 +9,7 @@ import { fromEvent } from 'rxjs';
 
 
 @Component({
-  selector: 'book-list',
+  selector: 'yamb-book-list',
   templateUrl: './book-list.component.pug',
   styleUrls: ['./book-list.component.scss']
 })
@@ -41,7 +41,7 @@ export class BookListComponent implements AfterViewInit {
     .subscribe(() => {
       this.paginator.pageIndex = 0;
       this.dataSource.pagination.pageIndex = 0;
-      let search = this.input.nativeElement.value;
+      const search = this.input.nativeElement.value;
       if (!search) {
         delete this.dataSource.pagination.filters;
       } else {
@@ -55,7 +55,7 @@ export class BookListComponent implements AfterViewInit {
     this.searchField.optionSelectionChanges.subscribe(() => {
       this.paginator.pageIndex = 0;
       this.dataSource.pagination.pageIndex = 0;
-      let search = this.input.nativeElement.value;
+      const search = this.input.nativeElement.value;
       if (search) {
         this.dataSource.pagination.filters = {};
         this.dataSource.pagination.filters[this.searchField.value] = search;

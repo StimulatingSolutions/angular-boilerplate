@@ -1,7 +1,7 @@
 import * as createError from 'http-errors';
 import * as mongoose from 'mongoose';
 import { InstanceType } from 'typegoose';
-import { Request, Response, Application, Router } from 'express'
+import { Request, Response, Application, Router } from 'express';
 import { RouteContext } from '../util/RouteContext';
 import * as expressPromise from 'express-promise-router';
 import { PaginationOptions } from '../../shared/util/PaginationOptions';
@@ -11,12 +11,12 @@ const express: any = expressPromise;
 
 abstract class BaseCrudCtrl<T> {
 
+  public static NEXT: Promise<string> = Promise.resolve('next');
+
   protected abstract model: mongoose.Model<InstanceType<T>> & T;
   protected abstract path: string;
   protected abstract buildFilterConditions: (params: any) => any;
   protected registeredRoutes: { [key: string]: RouteContext };
-
-  public static NEXT: Promise<string> = Promise.resolve('next');
 
   constructor() {
     this.registeredRoutes = {};
@@ -31,17 +31,17 @@ abstract class BaseCrudCtrl<T> {
     if (!req.query['~pageSize']) {
       return BaseCrudCtrl.NEXT;
     }
-    let pagination: PaginationOptions = new PaginationOptions();
-    pagination.pageSize = parseInt(req.query['~pageSize']);
-    pagination.pageIndex = parseInt(req.query['~pageIndex']);
+    const pagination: PaginationOptions = new PaginationOptions();
+    pagination.pageSize = parseInt(req.query['~pageSize'], 10);
+    pagination.pageIndex = parseInt(req.query['~pageIndex'], 10);
     pagination.sort = req.query['~sort'];
     pagination.sortDirection = req.query['~sortDirection'];
     delete req.query['~pageSize'];
     delete req.query['~pageIndex'];
     delete req.query['~sort'];
     delete req.query['~sortDirection'];
-    let filterParams = {};
-    for (let param of Object.keys(req.query)) {
+    const filterParams = {};
+    for (const param of Object.keys(req.query)) {
       if (!param.startsWith('~filter.')) {
         continue;
       }
@@ -53,7 +53,7 @@ abstract class BaseCrudCtrl<T> {
     return BaseCrudCtrl.NEXT;
   };
 
-   setCountOption = (req: Request, res: Response): Promise<string> => {
+  setCountOption = (req: Request, res: Response): Promise<string> => {
     if (!req.query['~countOnly']) {
       return BaseCrudCtrl.NEXT;
     }
@@ -63,10 +63,10 @@ abstract class BaseCrudCtrl<T> {
   };
 
   registerRoutes(app: Application): void {
-    let router: Router = express();
-    for (let routeName in this.registeredRoutes) {
-      let route: RouteContext = this.registeredRoutes[routeName];
-      for (let handler of route.handlers) {
+    const router: Router = express();
+    for (const routeName of Object.keys(this.registeredRoutes)) {
+      const route: RouteContext = this.registeredRoutes[routeName];
+      for (const handler of route.handlers) {
         router[route.method](route.path, ...route.middleware, handler);
       }
     }
@@ -90,16 +90,16 @@ abstract class BaseCrudCtrl<T> {
   };
 
   // Get a single page list
-  getPageList = (req: Request, res: Response): Promise<void|string> => {
+  getPageList = (req: Request, res: Response): Promise<void | string> => {
     if (!req.pagination) {
       return BaseCrudCtrl.NEXT;
     }
-    let filters = req.pagination.filters || {};
-    let pagePromise = this.model.find(filters)
+    const filters = req.pagination.filters || {};
+    const pagePromise = this.model.find(filters)
     .limit(req.pagination.pageSize)
     .skip(req.pagination.pageIndex * req.pagination.pageSize)
-    .sort((req.pagination.sortDirection === 'desc' ? '-' : '')+req.pagination.sort);
-    let countPromise = this.model.count(filters);
+    .sort((req.pagination.sortDirection === 'desc' ? '-' : '') + req.pagination.sort);
+    const countPromise = this.model.count(filters);
 
     return Promise.all([pagePromise, countPromise])
     .then((results: any[]) => {
@@ -108,7 +108,7 @@ abstract class BaseCrudCtrl<T> {
   };
 
   // Count
-  count = (req: Request, res: Response): Promise<void|string> => {
+  count = (req: Request, res: Response): Promise<void | string> => {
     if (!req.countOnly) {
       return BaseCrudCtrl.NEXT;
     }

@@ -18,16 +18,16 @@ abstract class BaseCrudApi<T> {
   }
 
   getList(loading: BehaviorSubject<boolean> = null): Observable<T[]> {
-    return <Observable<T[]>>this.http.get(loading, `${this.apiUrl}/${this.path}`)
+    return <Observable<T[]>>this.http.get(loading, `${this.apiUrl}/${this.path}`);
   }
 
   getListPage(pagination: PaginationOptions = null, loading: BehaviorSubject<boolean> = null): Observable<ListPage<T>> {
-    let options = pagination ? {pagination} : null;
-    return <Observable<ListPage<T>>>this.http.get(loading, `${this.apiUrl}/${this.path}`, options)
+    const options = pagination ? {pagination} : null;
+    return <Observable<ListPage<T>>>this.http.get(loading, `${this.apiUrl}/${this.path}`, options);
   }
 
   count(pagination: PaginationOptions = null, loading: BehaviorSubject<boolean> = null): Observable<number> {
-    let options = {params: {'~countOnly': null}, pagination};
+    const options = {params: {'~countOnly': null}, pagination};
     return <Observable<number>>this.http.get(loading, `${this.apiUrl}/${this.path}`, options);
   }
 
@@ -49,4 +49,4 @@ abstract class BaseCrudApi<T> {
 
 }
 
-export { BaseCrudApi }
+export { BaseCrudApi };

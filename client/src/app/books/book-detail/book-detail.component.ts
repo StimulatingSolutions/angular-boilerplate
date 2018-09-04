@@ -3,13 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { BookApi } from '../book.api';
 import { Book } from '../../../../../shared/models/book.model';
-import { Observable } from 'rxjs/internal/Observable';
-import { of } from 'rxjs/internal/observable/of';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 
 @Component({
-  selector: 'app-book-detail',
+  selector: 'yamb-book-detail',
   templateUrl: './book-detail.component.pug',
   styleUrls: ['./book-detail.component.scss']
 })

@@ -8,4 +8,4 @@ class PaginationOptions {
   public pageSize: number;
 }
 
-export { PaginationOptions, SortDirection }
+export { PaginationOptions, SortDirection };

@@ -14,6 +14,22 @@ const SEPARATOR = ' - ';
 
 @Injectable()
 export class TitleService {
+
+  static ucFirst(string) {
+    if (!string) {
+      return string;
+    }
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  static getTitle(title: string, noBase: boolean): string {
+    let titleBase = '';
+    if (!noBase) {
+      titleBase = BASE_TITLE + SEPARATOR;
+    }
+    return titleBase + title;
+  }
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -47,21 +63,6 @@ export class TitleService {
       })
     )
     .subscribe((pathString) => this.setTitle(pathString, true));
-  }
-
-  static ucFirst(string) {
-    if (!string) {
-      return string;
-    }
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  static getTitle(title: string, noBase: boolean): string {
-    let titleBase: string = '';
-    if (!noBase) {
-      titleBase = BASE_TITLE + SEPARATOR;
-    }
-    return titleBase + title;
   }
 
   setTitle(title: string, noBase: boolean = false): void {

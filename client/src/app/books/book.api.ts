@@ -9,7 +9,7 @@ import { HttpService } from '../util/http.service';
 })
 export class BookApi extends BaseCrudApi<Book> {
 
-  protected path: string = 'book';
+  protected path = 'book';
 
   constructor(protected http: HttpService) {
     super(http);

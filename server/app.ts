@@ -1,5 +1,5 @@
 import * as createError from 'http-errors';
-import { Request, Response, Application } from 'express'
+import { Request, Response, Application } from 'express';
 import * as express from 'express';
 import * as path from 'path';
 import * as logger from 'morgan';

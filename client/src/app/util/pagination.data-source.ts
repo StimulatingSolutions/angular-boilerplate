@@ -15,7 +15,7 @@ class PaginationDataSource<T> extends DataSource<T> {
   private loadingSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public loading: Observable<boolean> = this.loadingSubject.asObservable();
-  public totalAvailable: number = 0;
+  public totalAvailable = 0;
   public pagination: PaginationOptions;
 
   constructor(private api: BaseCrudApi<T>) {
@@ -46,4 +46,4 @@ class PaginationDataSource<T> extends DataSource<T> {
 
 }
 
-export { PaginationDataSource }
+export { PaginationDataSource };

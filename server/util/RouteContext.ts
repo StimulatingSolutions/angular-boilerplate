@@ -1,7 +1,7 @@
-import {Request, Response} from 'express'
+import { Request, Response } from 'express';
 
 type MethodType = 'all' | 'get' | 'post' | 'put' | 'delete';
-type RouteHandler =  (req: Request, res: Response) => (Promise<string|void>);
+type RouteHandler = (req: Request, res: Response) => (Promise<string | void>);
 
 
 class RouteContext {

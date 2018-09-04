@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "client/src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "yamb",
       "schematics": {},
       "architect": {
         "build": {

@@ -1,7 +1,7 @@
 
 interface ListPage<T> {
   page: T[];
-  total: number
+  total: number;
 }
 
-export { ListPage }
+export { ListPage };

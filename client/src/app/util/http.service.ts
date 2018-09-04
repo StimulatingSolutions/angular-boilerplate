@@ -4,7 +4,6 @@ import { Observable, throwError } from 'rxjs/index';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { catchError } from 'rxjs/operators';
 import * as assign from 'lodash.assign';
-import { PaginationOptions } from '../../../../shared/util/PaginationOptions';
 
 
 const DEFAULT_HTTP_OPTIONS = {
@@ -15,9 +14,6 @@ const DEFAULT_HTTP_OPTIONS = {
   providedIn: 'root'
 })
 export class HttpService {
-
-  constructor(protected http: HttpClient) {
-  }
 
   public static handleError(error: HttpErrorResponse) {
     if (error.error && error.error.message) {
@@ -30,6 +26,46 @@ export class HttpService {
     }
     // return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
+  }
+
+  public static prepOptions(options: any): any {
+
+    if (!options) {
+      return DEFAULT_HTTP_OPTIONS;
+    }
+
+    options = assign({}, DEFAULT_HTTP_OPTIONS, options);
+
+    if (options.params != null && !(options.params instanceof HttpParams)) {
+      options.params = new HttpParams();
+      for (const key of Object.keys(options.params)) {
+        options.params = options.params.set(key, options.params[key]);
+      }
+    }
+
+    if (options.pagination) {
+      if (!options.params) {
+        options.params = new HttpParams();
+      }
+      if (options.pagination.filters) {
+        for (const key of Object.keys(options.pagination.filters)) {
+          options.params = options.params.set(`~filter.${key}`, options.pagination.filters[key]);
+        }
+      }
+      if (options.pagination.sort) {
+        options.params = options.params.set('~sort', options.pagination.sort);
+        options.params = options.params.set('~sortDirection', options.pagination.sortDirection || 1);
+      }
+      options.params = options.params.set('~pageIndex', options.pagination.pageIndex || 0);
+      options.params = options.params.set('~pageSize', options.pagination.pageSize || 10);
+    }
+    delete options.pagination;
+
+    return options;
+  }
+
+
+  constructor(protected http: HttpClient) {
   }
 
   private httpRequest(method: string, loading: BehaviorSubject<boolean>, ...args: any[]): Observable<any> {
@@ -48,42 +84,6 @@ export class HttpService {
     }
 
     return observable;
-  }
-
-  public static prepOptions(options: any): any {
-
-    if (!options) {
-      return DEFAULT_HTTP_OPTIONS;
-    }
-
-    options = assign({}, DEFAULT_HTTP_OPTIONS, options);
-
-    if (options.params != null && !(options.params instanceof HttpParams)) {
-      options.params = new HttpParams();
-      for (let key of Object.keys(options.params)) {
-        options.params = options.params.set(key, options.params[key]);
-      }
-    }
-
-    if (options.pagination) {
-      if (!options.params) {
-        options.params = new HttpParams();
-      }
-      if (options.pagination.filters) {
-        for (let key of Object.keys(options.pagination.filters)) {
-          options.params = options.params.set(`~filter.${key}`, options.pagination.filters[key]);
-        }
-      }
-      if (options.pagination.sort) {
-        options.params = options.params.set('~sort', options.pagination.sort);
-        options.params = options.params.set('~sortDirection', options.pagination.sortDirection || 1);
-      }
-      options.params = options.params.set('~pageIndex', options.pagination.pageIndex || 0);
-      options.params = options.params.set('~pageSize', options.pagination.pageSize || 10);
-    }
-    delete options.pagination;
-
-    return options;
   }
 
   public get(loading: BehaviorSubject<boolean>, url: string, options: any = null): Observable<any> {

@@ -2,11 +2,11 @@ import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/for
 
 export class ValidationService {
   static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
-    let config = {
+    const config = {
       'required': 'Please enter a value',
       'invalidCreditCard': 'Credit card number is invalid',
       'invalidEmailAddress': 'Email address is invalid',
-      //'invalidPassword': 'Invalid password. Password must be at least 8 characters long, and contain a number.',
+      // 'invalidPassword': 'Invalid password. Password must be at least 8 characters long, and contain a number.',
       'minlength': `Minimum length is ${validatorValue.requiredLength}`,
       'maxlength': `Maximum length is ${validatorValue.requiredLength}`,
       'min': `Minimum value is ${validatorValue.min}`
@@ -34,7 +34,7 @@ export class ValidationService {
   }
 
   static validateForm(formGroup: FormGroup | FormArray) {
-    for (let field of Object.keys(formGroup.controls)) {
+    for (const field of Object.keys(formGroup.controls)) {
       const control = formGroup.get(field);
       if (control instanceof FormControl) {
         control.markAsTouched();

@@ -29,7 +29,7 @@
     "label-position": true,
     "max-line-length": [
       true,
-      140
+      200
     ],
     "member-access": false,
     "member-ordering": [
@@ -60,7 +60,7 @@
     "no-empty-interface": true,
     "no-eval": true,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-misused-new": true,
@@ -90,7 +90,8 @@
     "radix": true,
     "semicolon": [
       true,
-      "always"
+      "always",
+      "ignore-bound-class-methods"
     ],
     "triple-equals": [
       true,

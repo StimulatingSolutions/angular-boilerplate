@@ -5,23 +5,23 @@
   form([formGroup]='bookForm', (ngSubmit)='onFormSubmit(bookForm.value)')
     mat-form-field.example-full-width
       input(matInput placeholder='ISBN' formControlName='isbn')
-      mat-error(validation-message [control]="bookForm.controls.isbn")
+      mat-error(yamb-validation-message [control]="bookForm.controls.isbn")
     mat-form-field.example-full-width
       input(matInput placeholder='Title' formControlName='title')
-      mat-error(validation-message [control]="bookForm.controls.title")
+      mat-error(yamb-validation-message [control]="bookForm.controls.title")
     mat-form-field.example-full-width
       input(matInput placeholder='Author' formControlName='author')
-      mat-error(validation-message [control]="bookForm.controls.author")
+      mat-error(yamb-validation-message [control]="bookForm.controls.author")
     mat-form-field.example-full-width
       textarea(matInput placeholder='Description' formControlName='description')
-      mat-error(validation-message [control]="bookForm.controls.description")
+      mat-error(yamb-validation-message [control]="bookForm.controls.description")
     mat-form-field.example-full-width
       input(matInput placeholder='Publisher' formControlName='publisher')
-      mat-error(validation-message [control]="bookForm.controls.publisher")
+      mat-error(yamb-validation-message [control]="bookForm.controls.publisher")
     mat-form-field.example-full-width
       input(matInput placeholder='Published Year' formControlName='published_year')
-      mat-error(validation-message [control]="bookForm.controls.published_year")
+      mat-error(yamb-validation-message [control]="bookForm.controls.published_year")
     .button-row
       button(type='submit', [disabled]='!bookForm.valid' mat-raised-button color='primary')
         mat-icon save
-  loading-spinner([observe]="loading.asObservable()")
+  yamb-loading-spinner([observe]="loading.asObservable()")

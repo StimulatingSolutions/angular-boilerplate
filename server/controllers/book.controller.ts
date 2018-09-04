@@ -6,7 +6,7 @@ class BookCtrl extends BaseCrudCtrl<Book> {
   model = BookCollection;
   path = 'book';
   buildFilterConditions = (params: any): any => {
-    let result: any = {};
+    const result: any = {};
     if (params.title) {
       result.title = new RegExp(regexEscape(params.title), 'i');
     }
