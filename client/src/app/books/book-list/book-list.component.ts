@@ -31,6 +31,8 @@ export class BookListComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.dataSource.setPaginator(this.paginator);
+    this.dataSource.setSort(this.sort);
 
     // handle search input changes
     fromEvent(this.input.nativeElement, 'keyup')
@@ -61,22 +63,6 @@ export class BookListComponent implements AfterViewInit {
         this.dataSource.pagination.filters[this.searchField.value] = search;
         this.dataSource.loadData();
       }
-    });
-
-    // handle sort changes
-    this.sort.sortChange.subscribe(() => {
-      this.paginator.pageIndex = 0;
-      this.dataSource.pagination.pageIndex = 0;
-      this.dataSource.pagination.sort = this.sort.active;
-      this.dataSource.pagination.sortDirection = this.sort.direction;
-      this.dataSource.loadData();
-    });
-
-    // handle pagination changes
-    this.paginator.page.subscribe(() => {
-      this.dataSource.pagination.pageIndex = this.paginator.pageIndex;
-      this.dataSource.pagination.pageSize = this.paginator.pageSize;
-      this.dataSource.loadData();
     });
   }
 

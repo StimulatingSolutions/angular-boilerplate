@@ -2,9 +2,9 @@ import * as createError from 'http-errors';
 import * as mongoose from 'mongoose';
 import { InstanceType } from 'typegoose';
 import { Request, Response, Application, Router } from 'express';
-import { RouteContext } from '../util/RouteContext';
+import { RouteContext } from '../util/route-context';
 import * as expressPromise from 'express-promise-router';
-import { PaginationOptions } from '../../shared/util/PaginationOptions';
+import { PaginationOptions } from '../../shared/util/pagination-options';
 
 const express: any = expressPromise;
 

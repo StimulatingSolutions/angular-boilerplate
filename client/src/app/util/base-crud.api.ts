@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PaginationOptions } from '../../../../shared/util/PaginationOptions';
-import { ListPage } from '../../../../shared/util/ListPage';
+import { PaginationOptions } from '../../../../shared/util/pagination-options';
+import { ListPage } from '../../../../shared/util/list-page';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { HttpService } from './http.service';
 
