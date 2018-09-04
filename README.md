@@ -18,6 +18,7 @@ Additionally, it supports and/or provides examples of:
 * Server-side pagination/filtering/sorting
 * Page refreshes at arbitrary client paths
 * Promise-based Express routes (via [express-promise-router](https://github.com/express-promise-router/express-promise-router))
+* [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) protection
 * Flicker-reduced loading spinner
 * Angular Material 6 components (some)
 
@@ -103,7 +104,6 @@ of the originating code are used).  Those inspirational sources are:
 
 ## TO-DO
 
-* CSRF protection
 * upgradable authentication
 * permission-based routes
 * multiple app entry points

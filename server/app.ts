@@ -5,6 +5,8 @@ import * as path from 'path';
 import * as logger from 'morgan';
 import * as crypto from 'crypto';
 import * as fs from 'fs';
+import * as cookieParser from 'cookie-parser';
+import * as csurf from 'csurf';
 
 import * as mongoose from 'mongoose';
 import { registerControllers } from './controllers';
@@ -18,6 +20,20 @@ mongoose.connect('mongodb://localhost/yet-another-mean-boilerplate?retryWrites=t
 .then(() => {
 
   app.use(logger('dev'));
+  app.use(cookieParser());
+  app.use(csurf({cookie: true}));
+  app.use(function (err, req, res, next) {
+    if (err.code !== 'EBADCSRFTOKEN') {
+      return next(err);
+    }
+    // handle CSRF token errors here
+    res.status(403);
+    res.send('session has expired or form tampered with');
+  });
+  app.use(function (req, res, next) {
+    res.cookie('XSRF-TOKEN', req.csrfToken());
+    next();
+  });
   app.use(express.json());
   app.use(express.urlencoded({extended: false}));
 
