@@ -5,6 +5,7 @@ import { app } from './app';
 import * as debugFactory from 'debug';
 const debug = debugFactory('yet-another-mean-boilerplate:server');
 import * as http from 'http';
+import { Server } from 'http';
 
 /**
  * Get port from environment and store in Express.
@@ -17,7 +18,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-const server = http.createServer(app);
+const server: Server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -81,7 +82,7 @@ function onError(error: any): void {
 
 function onListening(): void {
   const addr = server.address();
-  const bind = typeof addr === 'string'
+  const bind: string = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);

@@ -1,31 +1,27 @@
-.button-row
-  a(mat-raised-button color='primary', (click)='bookDetails()')
-    mat-icon cancel
-form([formGroup]='bookForm', (ngSubmit)='onFormSubmit(bookForm.value)')
-  mat-form-field.example-full-width
-    input(matInput placeholder='ISBN' formControlName='isbn')
-    mat-error
-      span(*ngIf="!bookForm.get('isbn').valid && bookForm.get('isbn').touched") Please enter ISBN
-  mat-form-field.example-full-width
-    input(matInput placeholder='Title' formControlName='title')
-    mat-error
-      span(*ngIf="!bookForm.get('title').valid && bookForm.get('title').touched") Please enter Book Title
-  mat-form-field.example-full-width
-    input(matInput placeholder='Author' formControlName='author')
-    mat-error
-      span(*ngIf="!bookForm.get('author').valid && bookForm.get('author').touched") Please enter Book Author
-  mat-form-field.example-full-width
-    textarea(matInput placeholder='Description' formControlName='description')
-    mat-error
-      span(*ngIf="!bookForm.get('description').valid && bookForm.get('description').touched") Please enter Book Description
-  mat-form-field.example-full-width
-    input(matInput placeholder='Publisher' formControlName='publisher')
-    mat-error
-      span(*ngIf="!bookForm.get('publisher').valid && bookForm.get('publisher').touched") Please enter Publisher
-  mat-form-field.example-full-width
-    input(matInput placeholder='Published Year' formControlName='published_year')
-    mat-error
-      span(*ngIf="!bookForm.get('published_year').valid && bookForm.get('published_year').touched") Please enter Published Year
+.book-edit
   .button-row
-    button(type='submit', [disabled]='!bookForm.valid' mat-raised-button color='primary')
-      mat-icon save
+    a(mat-raised-button color='primary', [routerLink]="cancelRoute")
+      mat-icon cancel
+  form([formGroup]='bookForm', (ngSubmit)='onFormSubmit(bookForm.value)')
+    mat-form-field.example-full-width
+      input(matInput placeholder='ISBN' formControlName='isbn')
+      mat-error(validation-message [control]="bookForm.controls.isbn")
+    mat-form-field.example-full-width
+      input(matInput placeholder='Title' formControlName='title')
+      mat-error(validation-message [control]="bookForm.controls.title")
+    mat-form-field.example-full-width
+      input(matInput placeholder='Author' formControlName='author')
+      mat-error(validation-message [control]="bookForm.controls.author")
+    mat-form-field.example-full-width
+      textarea(matInput placeholder='Description' formControlName='description')
+      mat-error(validation-message [control]="bookForm.controls.description")
+    mat-form-field.example-full-width
+      input(matInput placeholder='Publisher' formControlName='publisher')
+      mat-error(validation-message [control]="bookForm.controls.publisher")
+    mat-form-field.example-full-width
+      input(matInput placeholder='Published Year' formControlName='published_year')
+      mat-error(validation-message [control]="bookForm.controls.published_year")
+    .button-row
+      button(type='submit', [disabled]='!bookForm.valid' mat-raised-button color='primary')
+        mat-icon save
+  loading-spinner([observe]="loading.asObservable()")

@@ -13,38 +13,44 @@ import {
   MatIconModule,
   MatButtonModule,
   MatCardModule,
-  MatFormFieldModule } from '@angular/material';
+  MatFormFieldModule, MatSelect, MatSelectModule, MatOptionModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { BookComponent } from './books/book/book.component';
+import { BookListComponent } from './books/book-list/book-list.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
-import { BookCreateComponent } from './books/book-create/book-create.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
+import { TitleService } from './util/title.service';
+import { HttpService } from './util/http.service';
+import { ValidationMessageComponent } from './util/validation/validation-message.component';
+import { BookApi } from './books/book.api';
+import { LoadingSpinnerComponent } from './util/loading-spinner/loading-spinner.component';
 
 
 const appRoutes: Routes = [
   {
-    path: 'books',
-    component: BookComponent,
-    data: { title: 'Book List' }
+    path: 'book-list',
+    component: BookListComponent,
+    data: {title: 'Book List'}
   },
   {
     path: 'book-details/:id',
     component: BookDetailComponent,
-    data: { title: 'Book Details' }
-  },
-  {
-    path: 'book-create',
-    component: BookCreateComponent,
-    data: { title: 'Create Book' }
+    data: {title: 'Book Details'}
   },
   {
     path: 'book-edit/:id',
     component: BookEditComponent,
-    data: { title: 'Edit Book' }
+    data: {title: 'Edit Book'}
   },
-  { path: '',
-    redirectTo: '/books',
+  {
+    path: 'book-create',
+    component: BookEditComponent,
+    data: {title: 'Create Book'}
+  },
+  {
+    path: '',
+    redirectTo: '/book-list',
     pathMatch: 'full'
   }
 ];
@@ -52,10 +58,11 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
+    BookListComponent,
     BookDetailComponent,
-    BookCreateComponent,
-    BookEditComponent
+    BookEditComponent,
+    ValidationMessageComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -72,10 +79,20 @@ const appRoutes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule
   ],
-  providers: [],
+  providers: [
+    TitleService,
+    BookApi,
+    HttpService,
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private titleService: TitleService) {
+    titleService.autoSetTitle();
+  }
+}
 

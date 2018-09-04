@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { BookService } from '../book.service';
-import {Book} from '../../../../../shared/models/Book';
+import { BookApi } from '../book.api';
+import { Book } from '../../../../../shared/models/book.model';
+import { Observable } from 'rxjs/internal/Observable';
+import { of } from 'rxjs/internal/observable/of';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 
 @Component({
@@ -13,29 +16,31 @@ import {Book} from '../../../../../shared/models/Book';
 export class BookDetailComponent implements OnInit {
 
   book: Book;
+  public loading = new BehaviorSubject<boolean>(false);
 
-  constructor(private route: ActivatedRoute, private api: BookService, private router: Router) { }
+  constructor(private route: ActivatedRoute,
+              private bookApi: BookApi,
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.getBookDetails(this.route.snapshot.params['id']);
   }
 
-  getBookDetails(id) {
-    this.api.getBook(id)
-    .subscribe(data => {
-      console.log(data);
+  getBookDetails(id: string) {
+    this.bookApi.get(id, this.loading)
+    .subscribe((data: Book) => {
       this.book = data;
+      this.loading.next(false);
     });
   }
 
-  deleteBook(id) {
-    this.api.deleteBook(id)
-    .subscribe(res => {
-        this.router.navigate(['/books']);
-      }, (err) => {
-        console.log(err);
-      }
-    );
+  deleteBook(id: string) {
+    this.bookApi.delete(id, this.loading)
+    .subscribe((data: Book) => {
+      this.router.navigate(['/book-list']);
+      this.loading.next(false);
+    });
   }
 
 }

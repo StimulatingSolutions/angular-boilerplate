@@ -1,10 +1,10 @@
-# MEAN boilerplate / example app
+# Yet Another MEAN Boilerplate / example app
 
 This project uses:
 * **M**ongo 4
 * **E**xpress 4
 * **A**ngular 6
-* **N**ode 8
+* **N**ode 10
 
 Additionally, it supports and/or provides examples of:
 * Pug templates instead of HTML
@@ -14,18 +14,20 @@ Additionally, it supports and/or provides examples of:
 * TypeScript for both client and server code
 * Sharing modules between client and server
 * DRY definition of Mongoose models and corresponding Typescript classes (via [Typegoose](https://github.com/szokodiakos/typegoose))
-* DRY CRUD entity controllers via inheritance (server-side)
+* DRY CRUD entity management via inheritance (server-side and client-side)
+* Server-side pagination/filtering/sorting
 * Page refreshes at arbitrary client paths
 * Promise-based Express routes (via [express-promise-router](https://github.com/express-promise-router/express-promise-router))
-* Angular Material layout and components
+* Flicker-reduced loading spinner
+* Angular Material 6 components (some)
 
 
 ## Installation
 
-* install nvm: `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`
-* install Node 8: `nvm install v8`
-* set Node 8 as your default (*unless you know you don't want that*): `nvm alias default v8`
-* upgrade npm to v6: `npm install -g npm@6.x`
+* install nvm (Node Version Manager): `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`
+* install Node 10 using nvm: `nvm install v10`
+* set Node 10 as your default (*unless you know you don't want that*): `nvm alias default v10`
+* upgrade npm to latest v6: `npm install -g npm@6.x`
 * install [Mongo 4](https://www.mongodb.com/download-center?jmp=nav#community), but don't set it up to run on boot
 (*unless you know you want that*)
 * install dependencies: `npm install`
@@ -94,20 +96,22 @@ article.
 Some code patterns used here are based on those found elsewhere (however no substantial portions
 of the originating code are used).  Those inspirational sources are:
 * https://github.com/leota/MEAN-stack-authentication
+* https://coryrylan.com/blog/angular-form-builder-and-validation-management
+* https://stackoverflow.com/a/48024544/751577
+* https://blog.angular-university.io/angular-material-data-table/
 
 
 ## TO-DO
 
-* better form error messages
-* server-side pagination/filtering/ordering
-* inheritance-based client services
-* multiple app entry points
-* authentication
+* CSRF protection
+* upgradable authentication
 * permission-based routes
+* multiple app entry points
 * toast
-* loading spinner
 * cordova wrapper
 * fix tests
+* cluster()
+* Agenda scheduled tasks
 
 ## License
 

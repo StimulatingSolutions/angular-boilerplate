@@ -1,0 +1,38 @@
+.book-list
+  .button-row
+    a(mat-raised-button, color='primary', [routerLink]="['/book-create']")
+      mat-icon add
+    | &nbsp;&nbsp;&nbsp;
+    mat-form-field
+      mat-select([value]="'title'")
+        mat-option([value]="'title'") Title contains:
+        mat-option([value]="'author'") Author contains:
+        mat-option([value]="'isbn'") ISBN contains:
+    | &nbsp;&nbsp;&nbsp;
+    mat-form-field
+      input(matInput, #searchInput)
+  .example-container.mat-elevation-z8
+    table(mat-table, [dataSource]='dataSource', matSort matSortActive="isbn" matSortDirection="asc" matSortDisableClear)
+      //
+        Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition"
+
+      // ISBN Column
+      ng-container(matColumnDef='isbn')
+        th(mat-header-cell, *matHeaderCellDef, mat-sort-header) ISBN
+        td.isbn-col(mat-cell, *matCellDef='let element')  {{element.isbn}}
+
+      // Title Column
+      ng-container(matColumnDef='title')
+        th(mat-header-cell, *matHeaderCellDef, mat-sort-header) Title
+        td(mat-cell, *matCellDef='let element')  {{element.title}}
+
+      // Author Column
+      ng-container(matColumnDef='author')
+        th(mat-header-cell, *matHeaderCellDef, mat-sort-header) Author
+        td(mat-cell, *matCellDef='let element')  {{element.author}}
+
+      tr(mat-header-row, *matHeaderRowDef='displayedColumns')
+      tr.clickable(mat-row, *matRowDef='let row; columns: displayedColumns;', [routerLink]="['/book-details/', row._id]")
+    mat-paginator([length]="dataSource.totalAvailable", [pageSize]="10", [pageSizeOptions]="[10, 25, 50]")
+  loading-spinner([observe]="dataSource.loading")

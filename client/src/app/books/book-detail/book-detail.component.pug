@@ -1,25 +1,27 @@
-.button-row
-  a(mat-raised-button color='primary', [routerLink]="['/books']")
-    mat-icon list
-mat-card.example-card(*ngIf='book')
-  mat-card-header
-    mat-card-title
-      h2 {{book.title}}
-    mat-card-subtitle {{book.description}}
-  mat-card-content
-    dl
-      dt ISBN:
-      dd {{book.isbn}}
-      dt Author:
-      dd {{book.author}}
-      dt Publisher:
-      dd {{book.publisher}}
-      dt Publish Year:
-      dd {{book.published_year}}
-      dt Update Date:
-      dd {{book.updated_date | date}}
-  mat-card-actions
-    a(mat-raised-button color='primary', [routerLink]="['/book-edit', book._id]")
-      mat-icon edit
-    a(mat-raised-button color='warn', (click)='deleteBook(book._id)')
-      mat-icon delete
+.book-detail
+  .button-row
+    a(mat-raised-button color='primary', [routerLink]="['/book-list']")
+      mat-icon list
+  mat-card.example-card(*ngIf='book')
+    mat-card-header
+      mat-card-title
+        h2 {{book.title}}
+      mat-card-subtitle {{book.description}}
+    mat-card-content
+      dl
+        dt ISBN:
+        dd {{book.isbn}}
+        dt Author:
+        dd {{book.author}}
+        dt Publisher:
+        dd {{book.publisher}}
+        dt Publish Year:
+        dd {{book.published_year}}
+        dt Update Date:
+        dd {{book.updated_date | date}}
+    mat-card-actions
+      a(mat-raised-button color='primary', [routerLink]="['/book-edit', book._id]")
+        mat-icon edit
+      a(mat-raised-button color='warn', (click)='deleteBook(book._id)')
+        mat-icon delete
+  loading-spinner([observe]="loading.asObservable()")

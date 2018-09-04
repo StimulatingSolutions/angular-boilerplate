@@ -1,12 +1,12 @@
 {
   "name": "yet-another-mean-boilerplate",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "license": "MIT",
   "author": "Joe Ibershoff <joe@stimulating-solutions.com>",
   "description": "MEAN boilerplate with Angular 6, Angular Material, backend Typescript, Typegoose, and more",
   "engines": {
-    "node": "8.11.1",
-    "npm": "6.4.0"
+    "node": "10.9.0",
+    "npm": "6.4.1"
   },
   "scripts": {
     "ng": "ng",
@@ -33,9 +33,11 @@
     "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
     "debug": "^3.1.0",
+    "escape-string-regexp": "^1.0.5",
     "express": "^4.16.3",
     "express-promise-router": "^3.0.3",
     "http-errors": "^1.7.0",
+    "lodash.assign": "^4.2.0",
     "mongoose": "^5.2.9",
     "morgan": "^1.9.0",
     "ng-cli-pug-loader": "^0.1.3",

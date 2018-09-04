@@ -1,4 +1,5 @@
 import * as createError from 'http-errors';
+import { Request, Response, Application } from 'express'
 import * as express from 'express';
 import * as path from 'path';
 import * as logger from 'morgan';
@@ -8,15 +9,17 @@ import * as fs from 'fs';
 import * as mongoose from 'mongoose';
 import { registerControllers } from './controllers';
 
+const app: Application = express();
 
-const app = express();
-
-mongoose.connect('mongodb://localhost/yet-another-mean-boilerplate', { useNewUrlParser: true, promiseLibrary: require('bluebird') })
+mongoose.connect('mongodb://localhost/yet-another-mean-boilerplate?retryWrites=true', {
+  useNewUrlParser: true,
+  promiseLibrary: global.Promise
+})
 .then(() => {
 
   app.use(logger('dev'));
   app.use(express.json());
-  app.use(express.urlencoded({ extended: false }));
+  app.use(express.urlencoded({extended: false}));
 
   // main app routes
   registerControllers(app);
@@ -25,14 +28,14 @@ mongoose.connect('mongodb://localhost/yet-another-mean-boilerplate', { useNewUrl
   app.use(express.static(path.join(__dirname, '../client')));
 
   // 404 any inappropriate API or assets routes
-  app.use([`/api/*`, `/assets/*`], function (req, res, next) {
+  app.use([`/api/*`, `/assets/*`], function (req: Request, res: Response, next) {
     next(createError(404));
   });
 
   // for any other routes, serve index.html so Angular can handle client-side routing
   let data;
   let eTag;
-  app.use('/', function(req, res, next) {
+  app.use('/', function (req: Request, res: Response, next) {
     if (req.method !== 'GET') {
       return next();
     }
@@ -57,7 +60,7 @@ mongoose.connect('mongodb://localhost/yet-another-mean-boilerplate', { useNewUrl
   });
 
   // error handler
-  app.use(function(err, req, res, next) {
+  app.use(function (err, req: Request, res: Response, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = app.get('env') === 'development' ? err : {};
