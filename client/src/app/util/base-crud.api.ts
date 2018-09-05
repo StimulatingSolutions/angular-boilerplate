@@ -17,6 +17,11 @@ abstract class BaseCrudApi<T> {
   constructor(protected http: HttpService) {
   }
 
+  // In the methods below, if a `loading` Subject is provided, it will emit `true` prior to initiating the http call, and will
+  // emit `false` only if an error occurs.  This means the calling function is required to call `loading.next(false)` on its
+  // own after processing the result.  If the automatic behavior described is not desired, the `loading` Subject can be omitted
+  // from the call and handled manually.
+
   getList(loading: BehaviorSubject<boolean> = null): Observable<T[]> {
     return <Observable<T[]>>this.http.get(loading, `${this.apiUrl}/${this.path}`);
   }

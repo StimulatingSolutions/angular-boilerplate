@@ -5,10 +5,10 @@ type RouteHandler = (req: Request, res: Response) => (Promise<string | void>);
 
 
 class RouteContext {
-  handlers: RouteHandler[];
-  method: MethodType;
-  path: string;
-  middleware: RouteHandler[];
+  public handlers: RouteHandler[];
+  public method: MethodType;
+  public path: string;
+  public middleware: RouteHandler[];
 
   constructor(method: MethodType, path: string, handler: RouteHandler | RouteHandler[], middleware: RouteHandler | RouteHandler[] = null) {
     this.method = method;

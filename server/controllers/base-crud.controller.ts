@@ -19,6 +19,9 @@ abstract class BaseCrudCtrl<T> {
   protected registeredRoutes: { [key: string]: RouteContext };
 
   constructor() {
+    // It is intended that a subclass may add additional routes, remove or alter the default routes set up here, add middleware to routes, etc.
+    // Since these base routes are set up in the constructor, but not used until registerRoutes() is called, a subclass can conveniently make
+    // those changes in its own constructor, after the call to super().
     this.registeredRoutes = {};
     this.registeredRoutes.list = new RouteContext('get', '/', [this.count, this.getPageList, this.getList], [this.setCountOption, this.setPaginationOptions]);
     this.registeredRoutes.get = new RouteContext('get', '/:id', this.get);
