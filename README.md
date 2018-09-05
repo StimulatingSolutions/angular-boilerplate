@@ -1,7 +1,7 @@
 # Yet Another MEAN Boilerplate / example app
 
 This project uses:
-* **M**ongo 4
+* **M**ongo 3.6
 * **E**xpress 4
 * **A**ngular 6
 * **N**ode 10
@@ -12,6 +12,7 @@ Additionally, it supports and/or provides examples of:
   to the way Angular 2+ uses punctuation (`*()[]`) in attribute names.
 * Sass (scss) styles instead of CSS
 * TypeScript for both client and server code
+* Heroku-ready (assuming the mLab MongoDB add-on)
 * Sharing modules between client and server
 * DRY definition of Mongoose models and corresponding Typescript classes (via [Typegoose](https://github.com/szokodiakos/typegoose))
 * DRY CRUD entity management via inheritance (server-side and client-side)
@@ -29,8 +30,8 @@ Additionally, it supports and/or provides examples of:
 * install Node 10 using nvm: `nvm install v10`
 * set Node 10 as your default (*unless you know you don't want that*): `nvm alias default v10`
 * upgrade npm to latest v6: `npm install -g npm@6.x`
-* install [Mongo 4](https://www.mongodb.com/download-center?jmp=nav#community), but don't set it up to run on boot
-(*unless you know you want that*)
+* install [Mongo 3.6](https://www.mongodb.com/download-center), but don't set it up to run on boot
+(*unless you know you want that*).  On OSX, you probably want to use `brew install mongodb@3.6`.
 * install dependencies: `npm install`
 
 
@@ -48,9 +49,9 @@ by an extra `--`. For example: `npm run <blah> --npm-flag-1 --npm-flag-2 -- --sc
 node, etc)
 * `--no-build` will skip the build step
 * `--no-clean` will skip deleting old build files in the build step
-* `--bare` will only start the node server; it assumes the code has already been build, expects the environment to be 
-set via `NODE_ENV`, and skips a couple other minor steps normally executed when running locally.  This is intended to be
-used in the context of a deployed server, not local testing.
+* `--bare` will only start the node server; it assumes the code has already been built, expects the environment to be 
+set externally via `NODE_ENV`, and skips a couple other minor steps normally executed when running locally.  This is
+intended to be used in the context of a deployed server, not local testing.
 
 
 ## Ng code scaffolding

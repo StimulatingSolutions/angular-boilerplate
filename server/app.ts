@@ -12,8 +12,9 @@ import * as mongoose from 'mongoose';
 import { registerControllers } from './controllers';
 
 const app: Application = express();
+const MONGODB_URI: string = process.env.MONGODB_URI || 'mongodb://localhost/yet-another-mean-boilerplate';
 
-mongoose.connect('mongodb://localhost/yet-another-mean-boilerplate?retryWrites=true', {
+mongoose.connect(`${MONGODB_URI}?retryWrites=true`, {
   useNewUrlParser: true,
   promiseLibrary: global.Promise
 })

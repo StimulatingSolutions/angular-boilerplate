@@ -1,6 +1,6 @@
 {
   "name": "yet-another-mean-boilerplate",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "license": "MIT",
   "author": "Joe Ibershoff <joe@stimulating-solutions.com>",
   "description": "MEAN boilerplate with Angular 6, Angular Material, backend Typescript, Typegoose, and more",
@@ -14,7 +14,8 @@
     "start": "./scripts/start.sh",
     "test": "./scripts/test.sh",
     "lint": "./scripts/lint.sh",
-    "postinstall": "node ./ng-add-pug-loader.js"
+    "postinstall": "node ./ng-add-pug-loader.js",
+    "heroku-postbuild": "npm run build -- --clean --prod"
   },
   "private": true,
   "dependencies": {
