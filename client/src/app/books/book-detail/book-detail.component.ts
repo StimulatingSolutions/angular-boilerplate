@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { BookApi } from '../book.api';
-import { Book } from '../../../../../shared/models/book.model';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Book } from '../book.model';
 
 
 @Component({

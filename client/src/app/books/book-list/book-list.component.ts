@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { BookApi } from '../book.api';
-import { Book } from '../../../../../shared/models/book.model';
 import { PaginationDataSource } from '../../util/pagination.data-source';
 import { MatPaginator, MatSelect, MatSort } from '@angular/material';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
+import { Book } from '../book.model';
 
 
 @Component({

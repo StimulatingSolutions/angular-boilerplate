@@ -3,10 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { BookApi } from '../book.api';
-import { Book } from '../../../../../shared/models/book.model';
 import { ValidationService } from '../../util/validation/validation.service';
-import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Book } from '../book.model';
 
 
 @Component({
