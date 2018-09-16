@@ -21,9 +21,7 @@ import { BookListComponent } from './books/book-list/book-list.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
 import { TitleService } from './util/title.service';
-import { HttpService } from './util/http.service';
 import { ValidationMessageComponent } from './util/validation/validation-message.component';
-import { BookApi } from './books/book.api';
 import { LoadingSpinnerComponent } from './util/loading-spinner/loading-spinner.component';
 
 
@@ -85,8 +83,6 @@ const appRoutes: Routes = [
   ],
   providers: [
     TitleService,
-    BookApi,
-    HttpService,
   ],
   bootstrap: [AppComponent]
 })
