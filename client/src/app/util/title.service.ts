@@ -9,7 +9,7 @@ import {Title} from '@angular/platform-browser';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 import {filter, map, switchMap} from 'rxjs/operators';
 
-const BASE_TITLE = 'YAMB';
+const BASE_TITLE = 'aeb';
 const SEPARATOR = ' - ';
 
 @Injectable()

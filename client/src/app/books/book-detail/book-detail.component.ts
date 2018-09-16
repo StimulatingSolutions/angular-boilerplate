@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 
 @Component({
-  selector: 'yamb-book-detail',
+  selector: 'aeb-book-detail',
   templateUrl: './book-detail.component.pug',
   styleUrls: ['./book-detail.component.scss']
 })

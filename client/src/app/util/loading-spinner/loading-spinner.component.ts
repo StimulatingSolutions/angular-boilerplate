@@ -4,7 +4,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 
 
 @Component({
-  selector: 'yamb-loading-spinner',
+  selector: 'aeb-loading-spinner',
   templateUrl: './loading-spinner.component.pug',
   styleUrls: ['./loading-spinner.component.scss'],
   // the animation definitions below greatly alleviate the flicker that would otherwise be very obvious for short-lived loads

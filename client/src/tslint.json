@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "yamb",
+            "aeb",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "yamb",
+            "aeb",
             "kebab-case"
         ]
     }

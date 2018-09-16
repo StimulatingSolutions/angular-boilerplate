@@ -31,6 +31,6 @@ fi
 if [[ "$PROD" != "" ]]
 then
   ng build --aot --prod
+else
+  ng build
 fi
-
-tsc -p server/tsconfig.server.json

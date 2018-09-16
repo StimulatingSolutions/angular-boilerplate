@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "yet-another-mean-boilerplate": {
+    "angular-electron-boilerplate": {
       "root": "",
       "sourceRoot": "client/src",
       "projectType": "application",
-      "prefix": "yamb",
+      "prefix": "aeb",
       "schematics": {},
       "architect": {
         "build": {
@@ -52,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "yet-another-mean-boilerplate:build"
+            "browserTarget": "angular-electron-boilerplate:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "yet-another-mean-boilerplate:build:production"
+              "browserTarget": "angular-electron-boilerplate:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "yet-another-mean-boilerplate:build"
+            "browserTarget": "angular-electron-boilerplate:build"
           }
         },
         "test": {
@@ -99,7 +99,7 @@
         }
       }
     },
-    "yet-another-mean-boilerplate-e2e": {
+    "angular-electron-boilerplate-e2e": {
       "root": "client/e2e/",
       "projectType": "application",
       "architect": {
@@ -107,11 +107,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "client/e2e/protractor.conf.js",
-            "devServerTarget": "yet-another-mean-boilerplate:serve"
+            "devServerTarget": "angular-electron-boilerplate:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "yet-another-mean-boilerplate:serve:production"
+              "devServerTarget": "angular-electron-boilerplate:serve:production"
             }
           }
         },
@@ -127,7 +127,7 @@
       }
     }
   },
-  "defaultProject": "yet-another-mean-boilerplate",
+  "defaultProject": "angular-electron-boilerplate",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"

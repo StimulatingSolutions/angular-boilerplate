@@ -4,7 +4,7 @@ import { ValidationService } from './validation.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'yamb-validation-message, [yamb-validation-message]',
+  selector: 'aeb-validation-message, [aeb-validation-message]',
   template: `<div *ngIf="errorMessage !== null">{{errorMessage}}</div>`
 })
 export class ValidationMessageComponent {

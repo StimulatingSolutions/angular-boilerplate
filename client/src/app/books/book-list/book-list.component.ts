@@ -9,7 +9,7 @@ import { fromEvent } from 'rxjs';
 
 
 @Component({
-  selector: 'yamb-book-list',
+  selector: 'aeb-book-list',
   templateUrl: './book-list.component.pug',
   styleUrls: ['./book-list.component.scss']
 })

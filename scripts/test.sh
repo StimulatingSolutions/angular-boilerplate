@@ -9,17 +9,11 @@ set -e
 
 if [[ "$#" == "0" ]]
 then
-  SERVER="true"
   CLIENT="true"
   E2E="true"
 fi
 while [[ "$#" > "0" ]]
 do
-  if [[ "$1" == "--server" ]]
-  then
-    SERVER="true"
-  fi
-
   if [[ "$1" == "--client" ]]
   then
     CLIENT="true"
@@ -33,13 +27,6 @@ do
   shift
 done
 
-
-if [[ "$SERVER" != "" ]]
-then
-  echo "Server tests not set up yet"
-  #npm run build
-  #mocha dist/server/test --exit
-fi
 
 if [[ "$CLIENT" != "" ]]
 then
